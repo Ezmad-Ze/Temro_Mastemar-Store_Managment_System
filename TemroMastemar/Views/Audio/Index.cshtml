@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TemroMastemar.Models.Audio>
+
+@{
+    ViewData["Title"] = "የድምፆች ገፅ";
+}
+<h1>የድምፆች ዝርዝር</h1>
+
+<p class="d-flex gap-5">
+    <a asp-action="AddorEdit" class="btn btn-primary mt-4">አዲስ ድምፅ አስገባ</a>
+</p>
+<table class="table table-striped" id="myTables">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AudioTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AudioType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AudioFor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AudioYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AudioBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Path)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AudioTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AudioType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AudioFor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item._Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AudioBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    <div class="row">
+                        <div class="col">
+                            <a asp-action="AddorEdit" asp-route-id="@item.AudioID" class="btn btn-secondary btn-sm">አስተካክል</a>
+                        </div>
+                        <div class="col">
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <form action="/Audio/Delete/@item.AudioID" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="submit" value="አስወግድ" class="btn btn-danger"
+                                   onclick="return confirm('ይህን ለማስወገድ እርግጠኛ ነዎት?')" />
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+        @*<link rel="stylesheet" type="text/css" href="~/lib/dattables/css/jquery.dataTables.css">*@
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="~/lib/"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/searchpanes/2.0.2/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTables').DataTable();
+        });
+    </script>
+}

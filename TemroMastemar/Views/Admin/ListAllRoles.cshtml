@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "ሁሉም ኃላፊነቶች";
+}
+<h1>ሁሉም ኃላፊነቶች ዝርዝር</h1>
+
+<a class="btn btn-primary mb-2 mt-2" asp-action="AddRole">ኃላፊነት አስገባ</a>
+
+@if (Model.Any())
+{
+    <div class="col-5"></div>
+    <table class="table col-3">
+        <thead>
+            <tr>
+                <td><h5>ኃላፊነት</h5></td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (var role in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@role.Name</td>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-9"></div>
+                            <div class="col">
+                                <a asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-primary">አስተካክል</a>
+                            </div>
+                            <div class="col">
+                                <form action="/Admin/ConfirmDelete/@role.Id" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="submit" value="አስወግድ" class="btn btn-danger"
+                                   onclick="return confirm('ይህን ለማስወገድ እርግጠኛ ነዎት?')" />
+                                </form>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+    <div class="col-4"></div>
+
+}
+else
+{
+    <h5 class="mt-3">ምንም ኃላፊነት እስካሁን አልገባም ለማስገባት</h5>
+}

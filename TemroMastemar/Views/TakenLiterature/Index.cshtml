@@ -1,0 +1,87 @@
+﻿@model IEnumerable<TemroMastemar.Models.TakenLiterature>
+
+@{
+    ViewData["Title"] = "የሥነ ፅሁፍ መውሰጃ ቅፅ";
+}
+
+<h1>የሥነ ፅሁፍ ወሳጆች ዝርዝር</h1>
+
+<p>
+    <a asp-action="AddorEdit" class="btn btn-primary">አዲስ ፅሁፍ ውሰድ</a>
+</p>
+<table class="table" id="myTables">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TL_Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TL_Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TL_LiteratureType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Giver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Taker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TL_Time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TL_Reason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TL_Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TL_LiteratureType)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giver)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Taker)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TL_Time)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <form action="/TakenLiterature/Delete/@item.TakenLiteratureID" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="submit" value="አስወግድ" class="btn btn-danger"
+                           onclick="return confirm('ይህን ለማስወገድ እርግጠኛ ነዎት?')" />
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/searchpanes/2.0.2/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTables').DataTable();
+        });
+    </script>
+}

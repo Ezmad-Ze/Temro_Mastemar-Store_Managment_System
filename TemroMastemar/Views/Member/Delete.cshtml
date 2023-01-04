@@ -1,0 +1,308 @@
+﻿@model TemroMastemar.Models.Member
+
+@{
+    ViewData["Title"] = "ማስወገጃ ገፅ";
+}
+
+<h2>የአባላት ማስወገጃ ቅፅ</h2>
+<hr />
+
+<div class="container" id="printable">
+    <div class="row top-fields">
+        <div class="col-3">
+            <h3>ግላዊ መረጃ</h3>
+        </div>
+        <div class="col-6">
+            <dl>
+                <div class="field">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.FullName)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt class="col-md-3 mt-3">
+                        @Html.DisplayNameFor(model => model.GrandFather_Name)
+                    </dt>
+                    <dd class="col-md-9 mt-3">
+                        @Html.DisplayFor(model => model.GrandFather_Name)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt class="col-md-3 mt-3">
+                        @Html.DisplayNameFor(model => model.Babtisal_Name)
+                    </dt>
+                    <dd class="col-md-9 mt-3">
+                        @Html.DisplayFor(model => model.Babtisal_Name)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt class="col-md-3 mt-3">
+                        @Html.DisplayNameFor(model => model.Mother_Name)
+                    </dt>
+                    <dd class="col-md-9 mt-3">
+                        @Html.DisplayFor(model => model.Mother_Name)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt class="col-md-3 mt-3">
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </dt>
+                    <dd class="col-md-9 mt-3">
+                        @Html.DisplayFor(model => model.Gender)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt class="col-md-3 mt-3">
+                        @Html.DisplayNameFor(model => model.Marital_Status)
+                    </dt>
+                    <dd class="col-md-9 mt-3">
+                        @Html.DisplayFor(model => model.Marital_Status)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt class="col-md-3 mt-3">
+                        @Html.DisplayNameFor(model => model.Nationality)
+                    </dt>
+                    <dd class="col-md-9 mt-3">
+                        @Html.DisplayFor(model => model.Nationality)
+                    </dd>
+                </div>
+            </dl>
+        </div>
+        <div class="col-3 mt-3">
+            <img src="@("~/Image/"+Model.Image)" asp-append-version="true" width="200px" height="200px" id="upload-image" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-9">
+            <dl class="top-field mt-2">
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateofBirth)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.DateofBirth)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.MonthofBirth)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.MonthofBirth)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.YearofBirth)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.YearofBirth)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PlaceofBirth)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.PlaceofBirth)
+                    </dd>
+                </div>
+
+            </dl>
+            <dl class="mt-4 top-field">
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sub_City)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Sub_City)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Woreda)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Woreda)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.House_Number)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.House_Number)
+                    </dd>
+                </div>
+                <div class="field">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone_Number)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone_Number)
+                    </dd>
+                </div>
+
+            </dl>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-3">
+            <h3>የትምህርት እና የሥራ መረጃ</h3>
+        </div>
+        <div class="col-6">
+            <dl>
+                <div class="field2">
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.Education_Status)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.Education_Status)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.Education_Field)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.Education_Field)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.WorkingIn)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.WorkingIn)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.Organization_Name)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.Organization_Name)
+                    </dd>
+                </div>
+
+            </dl>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-3">
+                <h3>ተምሮ ነክ መረጃ</h3>
+            </div>
+            <div class="col-6">
+                <dl>
+                    <div class="field2">
+                        <dt class="col-md-4">
+                            @Html.DisplayNameFor(model => model.YearofMembership)
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.YearofMembership)
+                        </dd>
+                    </div>
+                    <div class="field2">
+                        <dt class="col-md-4 mt-3">
+                            @Html.DisplayNameFor(model => model.Current_Committee)
+                        </dt>
+                        <dd class="col-md-8 mt-3">
+                            @Html.DisplayFor(model => model.Current_Committee)
+                        </dd>
+                    </div>
+                    <div class="field2">
+                        <dt class="col-md-4 mt-3">
+                            @Html.DisplayNameFor(model => model.Committe_Choice)
+                        </dt>
+                        <dd class="col-md-8 mt-3">
+                            @Html.DisplayFor(model => model.Committe_Choice)
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-3">
+            <h3>የአደጋ ጊዜ ተጠሪ</h3>
+        </div>
+        <div class="col-6">
+            <dl>
+                <div class="field2">
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.EmergencyContactName)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.EmergencyContactName)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.EC_Relation)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.EC_Relation)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.EC_Sub_City)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.EC_Sub_City)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4">
+                        @Html.DisplayNameFor(model => model.EC_Woreda)
+                    </dt>
+                    <dd class="col-md-8">
+                        @Html.DisplayFor(model => model.EC_Woreda)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.EC_House_Number)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.EC_House_Number)
+                    </dd>
+                </div>
+                <div class="field2">
+                    <dt class="col-md-4 mt-3">
+                        @Html.DisplayNameFor(model => model.EC_Phone_Number)
+                    </dt>
+                    <dd class="col-md-8 mt-3">
+                        @Html.DisplayFor(model => model.EC_Phone_Number)
+                    </dd>
+                </div>
+            </dl>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4 mb-4">
+    <div class="col-1"></div>
+    <div class="col-9">
+        <div>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MemberID" />
+                <input type="submit" value="አስወግድ" class="btn btn-danger" onclick="return confirm('ይህን ቅፅ ለማስወገድ እርግጠኛ ነዎት?')" />
+            </form>
+        </div>
+    </div>
+    <div class="col-2">
+        <a asp-action="Index" class="btn btn-secondary">ተመለስ</a>
+    </div>
+</div>
+

@@ -1,0 +1,118 @@
+﻿@model TemroMastemar.Models.Letter
+
+@{
+    ViewData["Title"] = Model.LetterID == 0 ? "አዲስ ደብዳቤ ማስገቢያ" : "ነባር ደብዳቤ ማደሻ";
+}
+
+<h1>የደብዳቤ ቅፅ</h1>
+
+<hr />
+
+<div class="container">
+    <form asp-action="AddorEdit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" name="LetterID" value="@Model.LetterID" />
+        <input type="hidden" asp-for="Document" name="Document" />
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="LetterTitle" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="LetterTitle" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="LetterTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="LetterType" class="control-label"></label>
+                    <input asp-for="LetterType" class="form-control" />
+                    <span asp-validation-for="LetterType" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group mt-3">
+                            <label asp-for="S_LetterDate" class="control-label"></label>
+                            <input asp-for="S_LetterDate" class="form-control" />
+                            <span asp-validation-for="S_LetterDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group mt-3">
+                            <label asp-for="S_LetterMonth" class="control-label"></label>
+                            <span class="text-danger">*</span>
+                            <input asp-for="S_LetterMonth" class="form-control" />
+                            <span asp-validation-for="S_LetterMonth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group mt-3">
+                            <label asp-for="S_LetterYear" class="control-label"></label>
+                            <span class="text-danger">*</span>
+                            <input asp-for="S_LetterYear" class="form-control" />
+                            <span asp-validation-for="S_LetterYear" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="From" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="From" class="form-control" />
+                    <span asp-validation-for="From" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="To" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="To" class="form-control" />
+                    <span asp-validation-for="To" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Physical_Document" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="Physical_Document" class="form-control" />
+                    <span asp-validation-for="Physical_Document" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="File" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="File" accept=".pdf" id="fileupload" name="File" class="form-control mt-2" />
+                    <span asp-validation-for="File" class="text-danger"></span>
+                </div>
+                @if (@Model.LetterID != 0)
+                {
+                    <iframe src="~/Letter/@Model.Document#toolbar=0&navpanes=0" asp-append-version="true" width="100%" height="500px" class="mt-3"></iframe>
+
+                }
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-5  mt-5 mb-5">
+                    <div class="form-group">
+                        <input type="submit" value="አስገባ" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-4  mt-5 mb-5">
+                    <a asp-action="Index" class="btn btn-secondary">ተመለስ</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#editable').selectpicker();
+        })
+    </script>
+
+}

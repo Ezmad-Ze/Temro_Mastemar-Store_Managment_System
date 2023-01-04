@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "ዋና ገፅ";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">የአባላት ዝርዝር @ViewBag.MemberCount</h1>
+    <h1 class="display-4">ወንድ ዝርዝር @ViewBag.MaleCount</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+*@
+<div class="container">
+    <div class="card shadow rounded mb-3">
+        <div class="card-header">
+            <h2>ስለ አባላት አጭር መረጃ</h2>
+        </div>
+        <div class="row card-body">
+            <div class="col-1"></div>
+            <div class="col-3">
+                <div class="card shadow rounded " >
+                    <div class="card-body">
+                        <h5 class="card-title">ቅፅ የሞሉ አባላት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.MemberCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">የወንድ አባላት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.MaleCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">የሴት አባላት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.FemaleCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row card-body">
+            <div class="col-2"></div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ያገቡ አባላት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.MarriedCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">በህይወት ያሉ አባላት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.IsAlive</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <div class="mt-3 card mb-3 shadow rounded">
+        <div class="card-header">
+            <h2>ስለ ሥነ ፅሁፍ አጭር መረጃ</h2>
+        </div>
+        <div class="row card-body">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ የሥነ ፅሁፍ ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.LiteratureCount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row card-body">
+            <div class="col-1"></div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ድራማ ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Drama</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ግጥም ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Poem</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ መነባንብ ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Menebanb</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row card-body">
+            <div class="col-1"></div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ትውውቅ ሥልት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Tiwiwk</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ሰንፔር ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Senper</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ታሪክ ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Tarik</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row card-body">
+            <div class="col-1"></div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ትረካ ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Tireka</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body shadow rounded ">
+                        <h5 class="card-title">ጠቅላላ ጥበበ ክህሎት ብዛት</h5>
+                        <p class="card-text fw-bolder">@ViewBag.Tibebe</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>

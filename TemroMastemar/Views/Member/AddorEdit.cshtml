@@ -1,0 +1,335 @@
+﻿@model TemroMastemar.Models.Member
+
+@{
+    ViewData["Title"] = Model.MemberID == 0 ? "አዲስ አባል ማስገቢያ" : "ነባር አባል ማደሻ";
+}
+
+<h2>የአባላት ቅፅ</h2>
+<hr />
+
+<div class="container">
+    <form asp-action="AddorEdit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" name="MemberID" value="@Model.MemberID" />
+        <input type="hidden" asp-for="Image" />
+        <div class="row">
+            <div class="col-3">
+                <h3>ግላዊ መረጃ</h3>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label"></label>
+                    <input asp-for="ImageFile" accept="image/*" id="fileupload" name="ImageFile" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="FullName" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GrandFather_Name" class="control-label"></label>
+                    <input asp-for="GrandFather_Name" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="GrandFather_Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Babtisal_Name" class="control-label"></label>
+                    <input asp-for="Babtisal_Name" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Babtisal_Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mother_Name" class="control-label"></label>
+                    <input asp-for="Mother_Name" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Mother_Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-3">
+                <img src="@("~/Image/"+Model.Image)" asp-append-version="true" width="200px" height="200px" id="upload-image" />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsAlive, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-10 mt-2">
+                        አሉ
+                        @Html.RadioButtonFor(model => model.IsAlive, "አሉ")
+                        የሉም
+                        @Html.RadioButtonFor(model => model.IsAlive, "የሉም")
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-9">
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" }):
+                            <span class="text-danger">*</span>
+                            <div class="col-md-10 mt-2">
+                                ወንድ
+                                @Html.RadioButtonFor(model => model.Gender, "ወንድ")
+                                ሴት
+                                @Html.RadioButtonFor(model => model.Gender, "ሴት")
+                            </div>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Marital_Status, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-10 mt-2">
+                                ያገባ
+                                @Html.RadioButtonFor(model => model.Marital_Status, "ያገባ")
+                                ያላገባ
+                                @Html.RadioButtonFor(model => model.Marital_Status, "ያላገባ")
+                            </div>
+                            <span asp-validation-for="Marital_Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="Nationality" class="control-label"></label>
+                            <input asp-for="Nationality" class="form-control" />
+                            <span asp-validation-for="Nationality" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="DateofBirth" class="control-label"></label>
+                            <input asp-for="DateofBirth" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="DateofBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="MonthofBirth" class="control-label"></label>
+                            <input asp-for="MonthofBirth" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="MonthofBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="YearofBirth" class="control-label"></label>
+                            <input asp-for="YearofBirth" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="YearofBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="PlaceofBirth" class="control-label"></label>
+                            <input asp-for="PlaceofBirth" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="PlaceofBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Sub_City, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-12 mt-2 dropdown btn btn-light">
+                                @Html.DropDownListFor(model => model.Sub_City,new SelectList(ViewBag.subcity),"ክፍለ ከተማ ይምረጡ", htmlAttributes: new {@class = "dropdown-item form-contol"})
+                            </div>
+                            <span asp-validation-for="Sub_City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="Woreda" class="control-label"></label>
+                            <input asp-for="Woreda" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Woreda" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="House_Number" class="control-label"></label>
+                            <input asp-for="House_Number" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="House_Number" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="Phone_Number" class="control-label"></label>
+                            <input asp-for="Phone_Number" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Phone_Number" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-3">
+                <h3>የትምህርት እና የሥራ መረጃ</h3>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label asp-for="Education_Status" class="control-label"></label>
+                            <input asp-for="Education_Status" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Education_Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label asp-for="Education_Field" class="control-label"></label>
+                            <input asp-for="Education_Field" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Education_Field" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label asp-for="WorkingIn" class="control-label"></label>
+                            <input asp-for="WorkingIn" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="WorkingIn" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label asp-for="Organization_Name" class="control-label"></label>
+                            <input asp-for="Organization_Name" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Organization_Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-3">
+                <h3>ተምሮ ነክ መረጃ</h3>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label asp-for="YearofMembership" class="control-label"></label>
+                            <input asp-for="YearofMembership" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="YearofMembership" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Current_Committee, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-12 mt-2 dropdown btn btn-light">
+                                @Html.DropDownListFor(model => model.Current_Committee,new SelectList(ViewBag.committee),"ኮሚቴ ይምረጡ", htmlAttributes: new {@class = "dropdown-item form-contol"})
+                            </div>
+                            <span asp-validation-for="Current_Committee" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Committe_Choice, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-12 mt-2 dropdown btn btn-light">
+                                @Html.DropDownListFor(model => model.Committe_Choice,new SelectList(ViewBag.committee),"ኮሚቴ ይምረጡ", htmlAttributes: new {@class = "dropdown-item form-contol"})
+                            </div>
+                            <span asp-validation-for="Committe_Choice" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-3">
+                <h3>የአደጋ ጊዜ ተጠሪ</h3>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="EmergencyContactName" class="control-label"></label>
+                            <input asp-for="EmergencyContactName" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="EC_Relation" class="control-label"></label>
+                            <input asp-for="EC_Relation" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="EC_Relation" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EC_Sub_City, htmlAttributes: new { @class = "control-label" })
+                            <div class="dropdown btn btn-light">
+                                @Html.DropDownListFor(model => model.EC_Sub_City,new SelectList(ViewBag.subcity),"ክፍለ ከተማ ይምረጡ", htmlAttributes: new {@class = "dropdown-item form-contol"})
+                            </div>
+                            <span asp-validation-for="EC_Sub_City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="EC_Woreda" class="control-label"></label>
+                            <input asp-for="EC_Woreda" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="EC_Woreda" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="EC_House_Number" class="control-label"></label>
+                            <input asp-for="EC_House_Number" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="EC_House_Number" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label asp-for="EC_Phone_Number" class="control-label"></label>
+                            <input asp-for="EC_Phone_Number" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="EC_Phone_Number" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row mt-4 mb-4">
+            <div class="col-1"></div>
+            <div class="col-9">
+                <div class="form-group">
+                    <input type="submit" value="አስገባ" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="col-2">
+                <a asp-action="Index" class="btn btn-secondary">ተመለስ</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(function() {
+            $("#fileupload").change(function(event) {
+                var x = URL.createObjectURL(event.target.files[0]);
+                $("#upload-image").attr("src", x);
+            })
+        })
+    </script>
+}

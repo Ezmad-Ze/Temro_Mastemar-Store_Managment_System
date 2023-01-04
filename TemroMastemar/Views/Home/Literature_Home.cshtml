@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "የኪነ ጥበባዊ ሥነ ፅሁፎች";
+}
+<h1>የኪነ ጥበባዊ ሥነ ፅሁፎች</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-3">
+                <div class="card-body shadow rounded hoverable">
+                    <h5 class="card-title py-3">የትልቁ ጉባኤ ኪነ ጥበባዊ ሥነ ፅሁፎች</h5>
+                    <a class="stretched-link" asp-controller="Literature" asp-action="Index"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-4 gap-2">
+                <div class="card-body shadow rounded hoverable">
+                    <h5 class="card-title py-3">የህፃናት ክፍል ኪነ ጥበባዊ ሥነ ፅሁፎች</h5>
+                    <a class="stretched-link" asp-controller="Children_Literature" asp-action="Index"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <div class="row">
+        <div class="col-12">
+            <div class="card mt-4 gap-2">
+                <div class="card-body shadow rounded hoverable">
+                    <h5 class="card-title py-3">የወጡ ኪነ ጥበባዊ ሥነ ፅሁፎች</h5>
+                    <a class="stretched-link" asp-controller="TakenLiterature" asp-action="Index"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

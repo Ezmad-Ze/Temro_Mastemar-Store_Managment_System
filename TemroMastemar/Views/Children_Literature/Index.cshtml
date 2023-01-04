@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TemroMastemar.Models.Children_Literature>
+
+@{
+    ViewData["Title"] = "የህፃናት ክፍል ኪነ ጥበባዊ ሥነ ፅሁፍ ገፅ";
+}
+
+<h1>የህፃናት ክፍል ኪነ ጥበባዊ ሥነ ፅሁፍ ዝርዝር</h1>
+
+<p class="d-flex gap-5">
+    <a asp-action="AddorEdit" class="btn btn-primary mt-4">አዲስ ፅሁፍ አስገባ</a>
+    <a asp-controller="TakenLiterature" asp-action="AddorEdit" class="btn btn-warning mt-4">የሥነ ፅሁፍ መውሰጃ ቅፅ</a>
+</p>
+<table class="table table-striped" id="myTables">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.C_LiteratureTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C_LiteratureType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C_LiteratureFor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WrittenYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C_Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C_Physical_Document)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Document)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_LiteratureTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_LiteratureType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_LiteratureFor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WrittenYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.C_Physical_Document)
+                </td>
+                <td>
+                    <a href="~/Children_Literature/@Html.DisplayFor(modelItem => item.Document)" class="btn btn-outline-success btn-sm" target="_blank" rel="noopener noreferrer">ፅሁፉን ተመልከት</a>
+                </td>
+                <td>
+                    <a asp-action="AddorEdit" asp-route-id="@item.C_LiteratureID" class="btn btn-secondary btn-sm">አስተካክል</a>|
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.C_LiteratureID" class="btn btn-danger btn-sm">አስወግድ</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/searchpanes/2.0.2/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTables').DataTable();
+        });
+    </script>
+}

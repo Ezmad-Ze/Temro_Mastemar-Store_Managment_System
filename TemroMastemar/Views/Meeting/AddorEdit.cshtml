@@ -1,0 +1,122 @@
+﻿@model TemroMastemar.Models.Meeting
+
+@{
+    ViewData["Title"] = Model.MeetingID == 0 ? "አዲስ ቃለ ጉባኤ ማስገቢያ" : "ነባር ቃለ ጉባኤ ማደሻ";
+}
+
+<h1>የቃለ ጉባኤ ቅፅ</h1>
+<hr />
+<div class="container">
+    <form asp-action="AddorEdit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" name="MeetingID" value="@Model.MeetingID" />
+        <input type="hidden" asp-for="Document" name="Document" />
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="MeetingAgenda" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="MeetingAgenda" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="MeetingAgenda" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="MemberID" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <div class="col-md-12 mt-2 dropdown btn btn-light">
+                        <select asp-for="MemberID" class="form-control btn btn-light" asp-items="ViewBag.MemberID" id="editable" data-live-search="true"></select>
+                    </div>
+                    <input asp-for="member" type="hidden" />
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="MeetingPlace" class="control-label"></label>
+                    <input asp-for="MeetingPlace" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="MeetingPlace" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group mt-3">
+                            <label asp-for="MeetingDate" class="control-label"></label>
+                            <input asp-for="MeetingDate" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="MeetingDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group mt-3">
+                            <label asp-for="MeetingMonth" class="control-label"></label>
+                            <span class="text-danger">*</span>
+                            <input asp-for="MeetingMonth" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="MeetingMonth" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group mt-3">
+                            <label asp-for="MeetingYear" class="control-label"></label>
+                            <span class="text-danger">*</span>
+                            <input asp-for="MeetingYear" class="form-control" autocomplete="off" id="test" onkeyup="return validator(this.value);" />
+                            <span asp-validation-for="MeetingYear" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group mt-3">
+                            <label asp-for="MeetingHour" class="control-label"></label>
+                            <input asp-for="MeetingHour" class="form-control" autocomplete="off" id="timepicker" />
+                            <span asp-validation-for="MeetingHour" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Physical_Document" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="Physical_Document" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Physical_Document" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="MeetingFile" class="control-label"></label>
+                    <span class="text-danger">*</span>
+                    <input asp-for="MeetingFile" accept=".pdf" id="fileupload" name="MeetingFile" class="form-control mt-2" />
+                    <span asp-validation-for="MeetingFile" class="text-danger"></span>
+                </div>
+                @if (@Model.MeetingID != 0)
+                {
+                    <iframe src="~/Meeting/@Model.Document#toolbar=0&navpanes=0" asp-append-version="true" width="100%" height="500px" class="mt-3"></iframe>
+
+                }
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-5  mt-5 mb-5">
+                    <div class="form-group">
+                        <input type="submit" value="አስገባ" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-4  mt-5 mb-5">
+                    <a asp-action="Index" class="btn btn-secondary">ተመለስ</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#editable').selectpicker();
+            $('#timepicker').timepicker();
+        });
+    </script>
+}

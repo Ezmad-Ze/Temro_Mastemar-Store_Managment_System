@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TemroMastemar.Models.Member>
+
+@{
+    ViewData["Title"] = "የአባላት ገፅ";
+}
+
+<h1>የአባላት ቅፅ ዝርዝር</h1>
+
+<p class="mt-5">
+    <a asp-action="AddorEdit" class="btn btn-primary">አዲስ አባል አስገባ</a>
+</p>
+<table class="table table-striped" id="myTables">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Babtisal_Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_Number)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.YearofMembership)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@("~/Image/"+item.Image)" asp-append-version="true" width="40px" height="40px" id="upload-image" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Babtisal_Name)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone_Number)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearofMembership)
+                </td>
+
+
+                <td>
+                    <a asp-action="AddorEdit" asp-route-id="@item.MemberID" class="btn btn-secondary">አስተካክል</a> |
+                    <a asp-action="Details" asp-route-id="@item.MemberID" class="btn btn-outline-success">በሰፊው</a> |
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.MemberID" class="btn btn-danger">አስወግድ</a>
+                    }
+                </td>
+                </tr>
+                    }
+        </tbody>
+    </table>
+            @section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTables').DataTable();
+        });
+
+    </script>
+}

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TemroMastemar.Models.Form>
+
+@{
+    ViewData["Title"] = "የቅፆች ገፅ";
+}
+
+<h1>የቅፆች ዝርዝር</h1>
+
+<p class="d-flex gap-5">
+    <a asp-action="AddorEdit" class="btn btn-primary mt-4">አዲስ ቅፅ አስገባ</a>
+</p>
+<table class="table table-striped" id="myTables">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FormTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FormBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Physical_Document)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Physical_Document)
+                </td>
+                <td>
+                    <a href="~/Form/@Html.DisplayFor(modelItem => item.Document)" class="btn btn-outline-success btn-sm" target="_blank" rel="noopener noreferrer">ቅፆችን ተመልከት</a>
+                </td>
+                <td>
+                    <a asp-action="AddorEdit" asp-route-id="@item.FormID" class="btn btn-secondary btn-sm">አስተካክል</a>|
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.FormID" class="btn btn-danger btn-sm">አስወግድ</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/searchpanes/2.0.2/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.4.0/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTables').DataTable();
+        });
+    </script>
+}

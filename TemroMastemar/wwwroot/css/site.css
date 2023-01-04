@@ -1,0 +1,82 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+#radioBtn .notActive {
+    color: #3276b1;
+    background-color: #fff;
+}
+
+.top-field {
+    display: flex;
+    gap: 70px;
+}
+
+.field {
+    display: flex;
+    gap: 25px;
+}
+
+.field2 {
+    display: flex;
+    gap: 50px;
+}
+
+.hoverable:hover {
+    background: linear-gradient(45deg,rgba(57, 192, 237, 0.3), rgba(178, 60, 253, 0.2) 100%);
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    /*    background-color: #480001;
+    color: #fefe0d;*/
+}
+
+.color {
+    background: linear-gradient(45deg,rgba(57, 192, 237, 0.3), rgba(178, 60, 253, 0.2) 100%);
+    border: none;
+    border-radius: 10px;
+}
+
+.header1 {
+    display: none;
+}
+
+@media print {
+    @page {
+        margin: 0;
+    }
+
+    #printable-body {
+        /*margin: 0 60px 0 30px;*/
+        margin: 10px 0 0 -150px;
+    }
+
+    .header1 {
+        display: block;
+        width: 100%;
+    }
+
+    h3 {
+        display: none;
+    }
+
+    .img {
+        margin-left: -150px;
+    }
+
+}

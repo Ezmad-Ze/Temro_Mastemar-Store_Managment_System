@@ -1,0 +1,9 @@
+﻿.top-fields{
+    display: flex;
+}
+.header1 {
+    background-image: url("../Image/header.png");
+    height: 400px;
+    width: 100%;
+    background-color: blue;
+}
