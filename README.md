@@ -1,6 +1,6 @@
 # Temro Mastemar - Registration and Store Managment System using .net 6 mvc
 
-This is a solution to the **Registration and Store Managment System .net mvc**
+This is a solution to the **Registration and Store Managment System .net mvc** for Temro Mastemar Sunday School
 
 ## Table of contents
 
