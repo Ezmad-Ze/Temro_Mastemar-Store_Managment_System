@@ -10,8 +10,12 @@ namespace TemroMastemar.Models
         [Display(Name = "ፎቶ")]
         public string? Image { get; set; }
         [Required(ErrorMessage = "እባክዎ ስም ያስገቡ")]
-        [Display(Name = "ሙሉ ስም እስከ አባት")]
-        public string FullName { get; set; }
+        [Display(Name = "ስም")]
+        public string Name { get; set; }
+
+        [Display(Name = "የአባት ስም")]
+        [Required(ErrorMessage = "እባክዎ የአባት ስም ያስገቡ")]
+        public string Father_Name { get; set; }
 
         [Display(Name = "የአያት ስም")]
         public string? GrandFather_Name { get; set; }
@@ -31,7 +35,7 @@ namespace TemroMastemar.Models
         public string? Babtisal_Name { get; set; }
 
         [Display(Name = "የትውልድ ቀን")]
-        public int? DateofBirth { get; set; }
+        public string? DateofBirth { get; set; }
 
         [Display(Name = "የትውልድ ወር")]
         public string? MonthofBirth { get; set; }
@@ -49,10 +53,10 @@ namespace TemroMastemar.Models
         public string? Sub_City { get; set; }
 
         [Display(Name = "ወረዳ")]
-        public int? Woreda { get; set; }
+        public string? Woreda { get; set; }
 
         [Display(Name = "የቤት ቁጥር")]
-        public int? House_Number { get; set; }
+        public string? House_Number { get; set; }
 
         [Display(Name = "ስልክ ቁጥር")]
         public string? Phone_Number { get; set; }
@@ -76,7 +80,8 @@ namespace TemroMastemar.Models
         public string? Committe_Choice { get; set; }
 
         [Display(Name = "የአባልነት ዓመተ ምህረት")]
-        public string? YearofMembership { get; set; }
+        [Required(ErrorMessage = "የአባልነት ዓመተ ምህረት ያስገቡ")]
+        public string YearofMembership { get; set; }
 
         [Display(Name = "የአደጋ ጊዜ ተጠሪ")]
         public string? EmergencyContactName { get; set; }
@@ -88,16 +93,20 @@ namespace TemroMastemar.Models
         public string? EC_Sub_City { get; set; }
 
         [Display(Name = "የተጠሪው ወረዳ")]
-        public int? EC_Woreda { get; set; }
+        public string? EC_Woreda { get; set; }
 
         [Display(Name = "የተጠሪው የቤት ቁጥር")]
-        public int? EC_House_Number { get; set; }
+        public string? EC_House_Number { get; set; }
 
         [Display(Name = "የተጠሪው ስልክ ቁጥር")]
         public string? EC_Phone_Number { get; set; }
 
         [Display(Name = "በህይወት አሉ")]
         public string? IsAlive { get; set; }
+
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public string? Unique_id { get; set; }
 
         [NotMapped]
         [Display(Name = "ፎቶ ይጫኑ")]
@@ -108,9 +117,36 @@ namespace TemroMastemar.Models
         {
             get
             {
-                return this.FullName + " " + this.GrandFather_Name;
+                return this.Name + " " + this.Father_Name +" "+this.GrandFather_Name;
             }
         }
+
+        [NotMapped]
+        public string? FullName
+        {
+            get
+            {
+                string fname;
+                if(this.Father_Name == null)
+                {
+                    fname = "";
+                } else
+                {
+                    fname = this.Father_Name;
+                }
+                return this.Name + " " + fname;
+            }
+        }
+        /*        [NotMapped]
+                public string Unique_id
+                {
+                    get
+                    {
+                        string initials = (Name.Length >= 2 ? Name.Substring(0, 2) : Name) + (Father_Name.Length >= 2 ? Father_Name.Substring(0, 2) : Father_Name);
+                        string yearMembership = YearofMembership.ToString();
+                        return initials + "-" + yearMembership;
+                    }
+                }*/
     }
 }
 //Made by Endeamlak. Z

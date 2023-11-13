@@ -497,11 +497,11 @@ namespace TemroMastemar.Migrations
                     b.Property<string>("Current_Committee")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DateofBirth")
-                        .HasColumnType("int");
+                    b.Property<string>("DateofBirth")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EC_House_Number")
-                        .HasColumnType("int");
+                    b.Property<string>("EC_House_Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EC_Phone_Number")
                         .HasColumnType("nvarchar(max)");
@@ -512,8 +512,8 @@ namespace TemroMastemar.Migrations
                     b.Property<string>("EC_Sub_City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EC_Woreda")
-                        .HasColumnType("int");
+                    b.Property<string>("EC_Woreda")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Education_Field")
                         .HasColumnType("nvarchar(max)");
@@ -524,7 +524,7 @@ namespace TemroMastemar.Migrations
                     b.Property<string>("EmergencyContactName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Father_Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -535,8 +535,8 @@ namespace TemroMastemar.Migrations
                     b.Property<string>("GrandFather_Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("House_Number")
-                        .HasColumnType("int");
+                    b.Property<string>("House_Number")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -551,6 +551,10 @@ namespace TemroMastemar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mother_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nationality")
@@ -569,8 +573,12 @@ namespace TemroMastemar.Migrations
                     b.Property<string>("Sub_City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Woreda")
-                        .HasColumnType("int");
+                    b.Property<string>("Unique_id")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Woreda")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WorkingIn")
                         .HasColumnType("nvarchar(max)");
@@ -579,6 +587,7 @@ namespace TemroMastemar.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("YearofMembership")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MemberID");

@@ -68,7 +68,7 @@ namespace TemroMastemar.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddorEdit([Bind("MemberID,ImageFile,Image,FullName,GrandFather_Name,Mother_Name,Gender,Nationality,Babtisal_Name,DateofBirth,MonthofBirth,YearofBirth,PlaceofBirth,Marital_Status,Sub_City,Woreda,House_Number,Phone_Number,Education_Status,Education_Field,WorkingIn,Organization_Name,Current_Committee,Committe_Choice,YearofMembership,EmergencyContactName,EC_Relation,EC_Sub_City,EC_Woreda,EC_House_Number,EC_Phone_Number,IsAlive")] Member member)
+        public async Task<IActionResult> AddorEdit([Bind("MemberID,ImageFile,Image,Name,Father_Name,GrandFather_Name,Mother_Name,Gender,Nationality,Babtisal_Name,DateofBirth,MonthofBirth,YearofBirth,PlaceofBirth,Marital_Status,Sub_City,Woreda,House_Number,Phone_Number,Education_Status,Education_Field,WorkingIn,Organization_Name,Current_Committee,Committe_Choice,YearofMembership,EmergencyContactName,EC_Relation,EC_Sub_City,EC_Woreda,EC_House_Number,EC_Phone_Number,IsAlive")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -120,6 +120,8 @@ namespace TemroMastemar.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+
             return View(member);
         }
 
